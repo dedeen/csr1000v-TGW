@@ -2,7 +2,7 @@
 # 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc104-att" {
   subnet_ids              = [module.vpc["vpc104"].intra_subnets[1],module.vpc["vpc104"].intra_subnets[3]]
-  transit_gateway_id      = tgw-07c688d56f372d1b4
+  transit_gateway_id      = tgw-07c688d56f372d1b4.id
   vpc_id                  = module.vpc["vpc104"].vpc_id
   appliance_mode_support  = "enable"                            # prevents asymm flows between consumer VPC and security VPC
   dns_support             = "enable"
