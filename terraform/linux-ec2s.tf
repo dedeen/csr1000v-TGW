@@ -29,3 +29,33 @@ resource "aws_instance" "linux2_104_az2" {
           Name  = "linux2_104_az2"
     }
 }
+
+resource "aws_instance" "linux3_105_az1" {
+  ami                                 = "ami-094125af156557ca2"
+  instance_type                       = "t2.micro"
+  key_name                            = "bastion-keypair"
+  associate_public_ip_address         = false
+  private_ip                          = "10.105.1.20"
+  subnet_id                           = module.vpc["vpc105"].intra_subnets[1]
+  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["vpc105"].id]  
+  source_dest_check                   = true
+  tags = {
+          Owner = "dan-via-terraform"
+          Name  = "linux3_105_az1"
+    }
+}
+
+resource "aws_instance" "linux4_105_az2" {
+  ami                                 = "ami-094125af156557ca2"
+  instance_type                       = "t2.micro"
+  key_name                            = "bastion-keypair"
+  associate_public_ip_address         = false
+  private_ip                          = "10.105.129.20"
+  subnet_id                           = module.vpc["vpc105"].intra_subnets[3]
+  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["vpc105"].id]  
+  source_dest_check                   = true
+  tags = {
+          Owner = "dan-via-terraform"
+          Name  = "linux4_105_az2"
+    }
+}
