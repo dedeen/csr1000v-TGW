@@ -20,7 +20,7 @@ resource "aws_instance" "linux2_104_az2" {
   instance_type                       = "t2.micro"
   key_name                            = "bastion-keypair"
   associate_public_ip_address         = false
-  private_ip                          = "10.104.129.10"
+  private_ip                          = "10.104.129.20"
   subnet_id                           = module.vpc["vpc104"].intra_subnets[3]
   vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["vpc104"].id]  
   source_dest_check                   = true
