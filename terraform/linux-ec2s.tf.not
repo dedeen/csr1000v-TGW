@@ -1,15 +1,13 @@
 #  Terraform to create end user EC2s 
 
-#  private subnet ec2
-resource "aws_instance" "linux1-private" {
+resource "aws_instance" "linux1_104_az1" {
   ami                                 = "ami-094125af156557ca2"
   instance_type                       = "t2.micro"
   key_name                            = "bastion-keypair"
-  #key_name                           = "${aws_key_pair.generated_key.key_name}"
   associate_public_ip_address         = false
-  private_ip                          = "10.100.1.20"
-  subnet_id                           = module.vpc["secvpc"].intra_subnets[1]
-  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["secvpc"].id]  
+  private_ip                          = "10.104.1.20"
+  subnet_id                           = module.vpc["vpc104"].intra_subnets[1]
+  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["vpc104"].id]  
   source_dest_check                   = true
   tags = {
           Owner = "dan-via-terraform"
@@ -17,21 +15,17 @@ resource "aws_instance" "linux1-private" {
     }
 }
 
-#  bastion host in mgmt subnet
-resource "aws_instance" "bastion-host" {
+resource "aws_instance" "linux1_104_az2" {
   ami                                 = "ami-094125af156557ca2"
   instance_type                       = "t2.micro"
   key_name                            = "bastion-keypair"
-  #key_name                            = "${aws_key_pair.generated_key.key_name}"
-  associate_public_ip_address         = true
-  private_ip                          = "10.100.3.20"
-  subnet_id                           = module.vpc["secvpc"].intra_subnets[3]
-  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["secvpc"].id]  
+  associate_public_ip_address         = false
+  private_ip                          = "10.104.129.20"
+  subnet_id                           = module.vpc["vpc105"].intra_subnets[3]
+  vpc_security_group_ids              = [aws_security_group.SG-allow_ipv4["vpc105"].id]  
   source_dest_check                   = true
   tags = {
           Owner = "dan-via-terraform"
-          Name  = "bastion-host"
+          Name  = "linux1-private"
     }
 }
-##
-  
