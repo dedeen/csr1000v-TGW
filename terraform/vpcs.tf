@@ -23,8 +23,8 @@ module "vpc" {
 }
 	
 # Build IGW on the Security VPC to allow outside access 
-resource "aws_internet_gateway" "sec_vpc_igw" {
-	vpc_id = module.vpc["secvpc"].vpc_id
+resource "aws_internet_gateway" "vpc104_igw" {
+	vpc_id = module.vpc["vpc104"].vpc_id
 		
 	tags = {
 	  Name = "sec_vpc_igw"
