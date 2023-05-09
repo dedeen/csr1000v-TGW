@@ -1,7 +1,7 @@
 {
     "AWSTemplateFormatVersion" : "2010-09-09",
     "Transform" : "AWS::Serverless-2016-10-31",
-    "Description" : "(SO0002) - Transit VPC w/ TGW: This 1b1ebf34-3f42-4d22-ef83-caf106975a0c creates a dedicated transit VPC with Cisco CSRs for routing traffic to a TGW over VPN connections. ***NOTE*** You must first subscribe to the appropriate Cisco CSR marketplace BYOL or License Included AMI from the AWS Marketplace before you launch this 1b1ebf34-3f42-4d22-ef83-caf106975a0c. Version 1",
+    "Description" : "(SO0002) - Transit VPC w/ TGW: This creates a dedicated transit VPC with Cisco CSRs for routing traffic to a TGW over VPN connections. ***NOTE*** You must first subscribe to the appropriate Cisco CSR marketplace BYOL or License Included AMI from the AWS Marketplace before you launch this 1b1ebf34-3f42-4d22-ef83-caf106975a0c. Version 1",
     "Parameters" : {
       "KeyName" : {
         "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
